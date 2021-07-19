@@ -2,7 +2,49 @@
     <div class='card' *ngFor='let light of lights'>
         <div class='card-body'>
             <h6 class='card-title'>{{light.name}}</h6>
-            
-        </div>
-    </div>    
+            <div class='custom-control custom-switch'>
+                <input
+                    type='checkbox'
+                    class='custom-control-input'
+                    id='power-light-{{light.id}}'
+                    [checked]='light.state.on'
+                    [(ngModel)]='light.state.on'
+                    (change)='togglePower(light.id, light.state.on)' />
+                <label class='custom-control-label' for='power-light-{{light.id}}'>Power</label>
+            </div>
+            <label for='intensity-light-{{light.id}}'>Intensity</label>
+            <input
+                type='range'
+                class='custom-range'
+                id='intensity-light-{{light.id}}'
+                min='0'
+                max='255'
+                [value]='light.state.bri'
+                [(ngModel)]='light.state.bri'
+                (change)='setIntensity(light.id, light.state.bri)' />
+            <label for='hue-light-{{light.id}}'>Hue</label>
+            <div class='hue-control-background'>
+                <input
+                type='range'
+                class='custom-range'
+                id='hue-light-{{light.id}}'
+                min='0'
+                max='65535'
+                [value]='light.state.hue'
+                [(ngModel)]='light.state.hue'
+                (change)='setHue(light.id, light.state.hue)' />
+            </div>
+            <label for='sat-light-{{light.id}}'>Saturation</label>
+            <input
+                type='range'
+                class='custom-range'
+                id='sat-light-{{light.id}}'
+                min='0'
+                max='255'
+                [value]='light.state.sat'
+                [(ngModel)]='light.state.sat'
+                (change)='setSat(light.id, light.state.sat)' />
+            <button (click)='checkColor(light.state.hue, light.state.sat, light.state.bri)'>Check color</button>
+            <div class='light-color' style='background: {{light.state.hexColor}}'></div>
+    </div>
 </div>

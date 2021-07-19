@@ -1,7 +1,13 @@
 export interface Light {
+    id: number;
     state: {
         on: Boolean;
         bri?: Number;
+        hue?: Number;
+        sat?: Number;
+        xy?: Number[];
+        hexColor?: String;
+        effect?: String;
         alert?: String;
         mode?: String;
         reachable?: Boolean;
@@ -37,4 +43,10 @@ export interface Light {
     };
     uniqueid?: String;
     swversion?: String;
+}
+
+export interface HsiColor {
+    h: number;
+    s: number;
+    i: number;
 }

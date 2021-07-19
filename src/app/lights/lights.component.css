@@ -1,5 +1,6 @@
 #lights {
-    /* display: flex; */
+    display: flex;
+    flex-wrap: wrap;
 }
 #lights .card {
     width: 18rem;
@@ -14,4 +15,20 @@
 }
 .light h4 {
     margin-top: 4px;
+}
+.hue-control-background {
+    background-image: linear-gradient(to right, #ff7777, #77ff77, #7777ff, #ff7777);
+    border-radius: 8px;
+}
+.light-color {
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+    border: solid 1px #ccc;
+    display: inline-block;
+}
+
+/* Boostrap overrides */
+.card {
+    margin: 8px;
 }
